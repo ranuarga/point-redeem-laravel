@@ -18,7 +18,7 @@ class Reward extends Model
         'reward_cost'
     ];
 
-    public function history(){
+    public function reward_history(){
         return $this->hasMany(RewardHistory::class, 'reward_id', 'reward_id');
     }
 }

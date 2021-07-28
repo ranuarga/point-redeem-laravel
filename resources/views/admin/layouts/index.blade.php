@@ -58,19 +58,22 @@
                             <a class="nav-link" href="{{ route('dashboard') }}">
                                 Dashboard
                             </a>
-                            <a class="nav-link" href="{{ route('dashboard') }}">
+                            <a class="nav-link" href="{{ route('admin.activity') }}">
+                                Activity
+                            </a>
+                            <a class="nav-link" href="{{ route('admin.member') }}">
                                 Member
                             </a>
-                            <a class="nav-link" href="{{ route('dashboard') }}">
-                                Article
-                            </a>
-                            <a class="nav-link" href="{{ route('dashboard') }}">
+                            <a class="nav-link" href="{{ route('admin.reward') }}">
                                 Reward
                             </a>
-                            <a class="nav-link" href="{{ route('dashboard') }}">
+                            <a class="nav-link" href="{{ route('admin.redeem-request') }}">
                                 Redeem Request
                             </a>
-                            <a class="nav-link" href="{{ route('admin.logout') }}">
+                            <a class="nav-link" href="{{ route('admin.article') }}">
+                                Article
+                            </a>
+                            <a class="nav-link" href="#">
                                 Logout
                             </a>
                         </div>

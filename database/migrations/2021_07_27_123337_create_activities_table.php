@@ -17,7 +17,7 @@ class CreateActivitiesTable extends Migration
             $table->bigIncrements('activity_id');
             $table->string('activity_title')->nullable(false);
             $table->text('activity_description')->nullable();
-            $table->unsignedInteger('reward_point')->nullable()->default(1);
+            $table->unsignedInteger('activity_reward_point')->nullable()->default(1);
             $table->timestamps();
         });
     }

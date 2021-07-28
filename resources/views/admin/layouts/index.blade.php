@@ -73,7 +73,7 @@
                             <a class="nav-link" href="{{ route('admin.article') }}">
                                 Article
                             </a>
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="{{ route('admin.logout') }}">
                                 Logout
                             </a>
                         </div>

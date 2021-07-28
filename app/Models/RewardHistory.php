@@ -19,7 +19,7 @@ class RewardHistory extends Model
     ];
 
     public function reward(){
-        return $this->belongsTo(Rewards::class, 'reward_id', 'reward_id');
+        return $this->belongsTo(Reward::class, 'reward_id', 'reward_id');
     }
 
     public function user(){

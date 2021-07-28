@@ -31,11 +31,23 @@
                         <a class="nav-link" href="{{ route('home') }}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Reward</a>
+                        <a class="nav-link" href="{{ route('activity') }}">Activity</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('reward') }}">Reward</a>
                     </li>
                     @auth
                         <li class="nav-item">
-                            <a class="nav-link" href="#">My Article</a>
+                            <a class="nav-link" href="{{ route('my-article') }}">My Article</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('my-account') }}">My Account</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('point-history') }}">Point History</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('reward-history') }}">Reward History</a>
                         </li>
                     @endauth
                     
@@ -48,8 +60,6 @@
                                 {{ Auth::user()->user_name }}
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">My Account</a>
-                                <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
                             </div>
                         </li>
@@ -67,11 +77,30 @@
             <!-- <a class="btn btn-primary" href="#">Sign In</a> -->
         </div>
     </nav>
+    <div class="container flash-container">
+        @if ($message = Session::get('success'))
+            <div class="alert alert-success alert-dismissible fade show alert-absolute" role="alert">
+                {{ $message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
+        @if ($message = Session::get('error'))
+            <div class="alert alert-danger alert-dismissible fade show alert-absolute" role="alert">
+                {{ $message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
+    </div>
     @yield('content')
     <!-- Bootstrap core JavaScript -->
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('js/scripts.js') }}"></script>
     <script src="{{ asset('js/progress.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/js/all.min.js" crossorigin="anonymous"></script>
     </body>
 </html>

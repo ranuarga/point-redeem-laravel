@@ -14,13 +14,35 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'HomeController@index');
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('home', 'HomeController@index')->name('home');
+Route::get('activity', 'MemberActivityController@index')->name('activity');
+Route::get('reward', 'MemberRewardController@index')->name('reward');
+Route::get('article/{id}', 'MemberArticleController@show')->name('article');
 
 Route::get('login', 'LoginController@showLoginForm')->name('login');
 Route::post('login', 'LoginController@login')->name('login.post');
 Route::get('register', 'RegisterController@index')->name('register');
 Route::post('register', 'RegisterController@store')->name('register.post');
 Route::get('logout', 'LoginController@logout')->name('logout');
+
+Route::middleware('auth:member')->group(function () {
+    Route::get('reward/redeem/{id}', 'MemberRewardController@redeem')->name('reward.redeem');
+
+    Route::get('my-article', 'MemberArticleController@index')->name('my-article');
+    Route::get('my-article/create', 'MemberArticleController@create')->name('my-article.create');
+    Route::post('my-article/store', 'MemberArticleController@storeWeb')->name('my-article.store');
+    Route::get('my-article/{id}/edit', 'MemberArticleController@edit')->name('my-article.edit');
+    Route::post('my-article/{id}/update', 'MemberArticleController@updateWeb')->name('my-article.update');
+    Route::get('my-article/{id}/delete', 'MemberArticleController@destroy')->name('my-article.delete');
+
+    Route::post('comment/{article_id}', 'MemberArticleController@writeComment')->name('comment.store');
+
+    Route::get('point-history', 'MemberHistoryController@pointHistory')->name('point-history');
+    Route::get('reward-history', 'MemberHistoryController@rewardHistory')->name('reward-history');
+
+    Route::get('my-account', 'MemberController@myAccount')->name('my-account');
+    Route::post('my-account', 'MemberController@updateMyAccount')->name('my-account.update');
+});
 
 Route::get('admin/login', 'LoginController@showAdminLoginForm')->name('admin.login');
 Route::post('admin/login', 'LoginController@adminLogin')->name('admin.login.post');
@@ -36,8 +58,8 @@ Route::prefix('admin')->middleware('auth:admin')->group(function(){
     Route::get('reward', 'RewardController@index')->name('admin.reward');
     Route::get('reward/create', 'RewardController@create')->name('admin.reward.create');
     Route::post('reward/store', 'RewardController@storeWeb')->name('admin.reward.store');
-    Route::post('reward/{id}/update', 'RewardController@updateWeb')->name('admin.reward.update');
     Route::get('reward/{id}/edit', 'RewardController@edit')->name('admin.reward.edit');
+    Route::post('reward/{id}/update', 'RewardController@updateWeb')->name('admin.reward.update');
     Route::get('reward/{id}/delete', 'RewardController@destroy')->name('admin.reward.delete');
     
     Route::get('redeem-request', 'RedeemRequestController@index')->name('admin.redeem-request');

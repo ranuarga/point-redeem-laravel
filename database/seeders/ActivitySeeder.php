@@ -26,7 +26,7 @@ class ActivitySeeder extends Seeder
             ],
             [
                 'activity_title' => 'Tulis Artikel',
-                'activity_description' => 'Tulis artikel dan mendapatkan 10 poin',
+                'activity_description' => 'Tulis artikel dan dapatkan 10 poin',
                 'activity_reward_point' => 10,
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')

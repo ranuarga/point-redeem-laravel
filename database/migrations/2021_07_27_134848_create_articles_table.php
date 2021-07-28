@@ -18,6 +18,7 @@ class CreateArticlesTable extends Migration
             $table->string('article_title')->nullable(false);
             $table->text('article_content')->nullable(false);
             $table->unsignedBigInteger('user_id');
+            $table->timestamps();
             
             $table
                 ->foreign('user_id')
